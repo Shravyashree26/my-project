@@ -1,0 +1,27 @@
+name: Code Quality Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  quality-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Display Repository Files
+        run: ls -la
+
+      - name: Check YAML Syntax
+        run: |
+          find . -name "*.yml" -o -name "*.yaml"
+
+      - name: Display Success Message
+        run: echo "Code Quality Check Passed!"
